@@ -1,5 +1,7 @@
-
 def transition_tab(transition):
+    variable = [ chr(i) for i in range(97, 123)]
+    operator = ['+', '-', '*', '/', '%', '=', '<', '>']
+    
     # Syntax for
     # < for > 
     transition[('q0', 'f')] = 'q1'
@@ -10,7 +12,6 @@ def transition_tab(transition):
     transition[('q3', ' ')] = 'q4'
     
     # < variable a - z>
-    variable = [ chr(i) for i in range(97, 123)]
     for i in variable:
         transition[('q4', i)] = 'q5'
     
@@ -22,14 +23,11 @@ def transition_tab(transition):
     
     # < space >
     transition[('q8', ' ')] = 'q9' # to range
-    # transition[('q8', ' ')] = 'q21' # to variable
     
-    # # Variable
-    # for i in range(97, 123):
-    #     transition[('q21', chr(i))] = 'q21'
-    # # end char to :
-    # transition[('q21', ':')] = 'ACCEPT'
-    
+    # Variable
+    for i in range(97, 123):
+        transition[('q9', chr(i))] = 'q30'
+        
     # # < range 0 - 9 >
     transition[('q9', 'r')] = 'q10'
     transition[('q10', 'a')] = 'q11'
@@ -53,7 +51,7 @@ def transition_tab(transition):
         transition[('q17', str(i))] = 'q18'
     transition[('q18', ' ')] = 'q18'
     transition[('q18', ',')] = 'q19'
-    transition[('q18', ')')] = 'q29'
+    transition[('q18', ')')] = 'q30'
     
     # # range(number, number, number)
     transition[('q19', ' ')] = 'q19'
@@ -61,6 +59,43 @@ def transition_tab(transition):
         transition[('q19', str(i))] = 'q29'
     transition[('q29', ' ')] = 'q29'
     transition[('q29', ')')] = 'q30'
-    transition[('q30', ':')] = 'ACCEPT'
-     
+    
+    # ACCEPT
+    transition[('q30', ':')] = 'q20'
+    # transition[('q30', ':')] = 'ACCEPT'
+    transition[('q20', ' ')] = 'q20' # loop diri sendiri
+    
+    for i in variable: # variabel a- z
+        transition[('q20', i)] = 'q21'
+    
+    transition[('q21', ' ')] = 'q21'
+    
+    transition[('q21', '=')] = 'q23'
+    
+    transition[('q23', ' ')] = 'q23'
+    
+    # < variable a - z>
+    for i in variable: # a - z
+        transition[('q23', i)] = 'q25'
+    for i in range(0,10):
+        transition[('q23', str(i))] = 'q25'
+    transition[('q25', ' ')] = 'q25'
+       
+    for i in operator:
+        if i == '=' or i == '!':
+            transition['q25', str(i)] = 'q29'
+            for i in operator :
+                transition['q29', str(i)] = 'q27'
+        elif i == '<' or i == '>':
+            transition['q25', '<'] = 'q27'
+            transition['q25', '>'] = 'q27'
+            transition['q27', '='] = 'q27'
+        else:
+            transition['q25', str(i)] = 'q27'
+    
+    transition[('q27', ' ')] = 'q27'
+    for i in variable: # a - z
+        transition[('q27', i)] = 'ACCEPT'
+    for i in range(0,10):
+        transition[('q27', str(i))] = 'ACCEPT'
     return transition
