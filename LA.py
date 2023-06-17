@@ -1,8 +1,9 @@
 import tables.transition as transition
 from collections import defaultdict
+
 def analyze(input_string):
     # Inisialisasi State 
-    state_list = []; list(state_list.append(f'q{i}') for i in range(30+1))
+    state_list = []; list(state_list.append(f'q{i}') for i in range(100+1))
     # Inisilisasi Nilai Awal
     transition_table = defaultdict(lambda: "ERROR", {})
      
@@ -11,7 +12,7 @@ def analyze(input_string):
     idx = 0
     state = 'q0'
     current_token = ''
-    
+    print(transition_table)
     while state != 'ACCEPT':
         current_char = input_string[idx]
         current_token += current_char
@@ -27,7 +28,7 @@ def analyze(input_string):
      
     
 def main():
-    input_string = """for a range(1,1):"""
+    input_string = """for i in range(1,1,1): """
     print(analyze(input_string))
 
 main()
