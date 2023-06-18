@@ -19,7 +19,7 @@ def analyze(input_string):
         current_char = input_string[idx]
         current_token += current_char
         state = transition_table[(state, current_char)]
-        # print(f'{state} : {current_char}')
+        print(f'{state} : {current_char}')
         if current_token[idx] == ' ': state_parse.append('space')
         else: state_parse.append(current_token[idx])
 
