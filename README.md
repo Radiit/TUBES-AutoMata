@@ -6,3 +6,8 @@ Cara Menggunakan:
 3. Hasil pengecekan akan ditampilkan dan akan dilakukan parse jika Grammar benar
 https://lexical-analysis-kelompok3.streamlit.app/
 
+Anggota kelompok : 
+Ichwan Rizky Wahyudin
+Alicia Kristina Parinussa
+Raditya Aydin
+
