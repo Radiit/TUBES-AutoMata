@@ -86,7 +86,7 @@ def main():
         st.caption('2. Tekan tombol Analyze untuk melakukan pengecekan Grammar dan parse')
         st.caption('3. Hasil pengecekan akan ditampilkan dan akan dilakukan parse jika Grammar benar')
 
-        st.markdown('Kelompok 8 :\n')
+        st.markdown('Kelompok 3 :\n')
         st.caption('Ichwan Rizky Wahyudin (1301213434)\n')
         st.caption('Alicia Kristina Parinussa (1301213507)\n')
         st.caption('Raditya Aydin (1301213292)\n')
