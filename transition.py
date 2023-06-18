@@ -82,7 +82,7 @@ def transition_tab(transition):
     transition[('q25', ' ')] = 'q25'
        
     for i in operator:
-        if i == '=' or i == '!' or i  == '*':
+        if i == '=' or i == '!' or i  == '*' or i == '/':
             transition['q25', str(i)] = 'q29'
             for i in operator :
                 transition['q29', ' '] = 'q27'
