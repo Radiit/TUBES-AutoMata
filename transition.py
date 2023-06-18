@@ -1,7 +1,7 @@
 def transition_tab(transition):
     variable = [ chr(i) for i in range(97, 123)]
     operator = ['+', '-', '*', '/', '%', '=', '<', '>']
-    
+    #
     # Syntax for
     # < for > 
     transition[('q0', 'f')] = 'q1'
@@ -82,7 +82,7 @@ def transition_tab(transition):
     transition[('q25', ' ')] = 'q25'
        
     for i in operator:
-        if i == '=' or i == '!':
+        if i == '=' or i == '!' or i  == '*':
             transition['q25', str(i)] = 'q29'
             for i in operator :
                 transition['q29', str(i)] = 'q27'

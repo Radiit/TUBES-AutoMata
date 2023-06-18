@@ -1,16 +1,16 @@
 import transition
 from collections import defaultdict
 import streamlit as st
-
+# 
 state_parse = []
 def analyze(input_string):
-    # Inisialisasi State 
+    # Inisialisasi State
     state_list = []; list(state_list.append(f'q{i}') for i in range(30+1))
     # Inisilisasi Nilai Awal
     transition_table = defaultdict(lambda: "ERROR", {})
-     
+
     transition_table = transition.transition_tab(transition_table)
-    
+
     idx = 0
     state = 'q0'
     current_token = ''
@@ -22,16 +22,16 @@ def analyze(input_string):
         # print(f'{state} : {current_char}')
         if current_token[idx] == ' ': state_parse.append('space')
         else: state_parse.append(current_token[idx])
-        
+
         if state == "ERROR":
             print("ERROR : Lexical Error")
             break
         idx += 1
-    
-    return state == "ACCEPT" 
+
+    return state == "ACCEPT"
 
 def concat(input_string):
-    return 
+    return
 def main():
     # input_string = input("Input String : ")
     input_string = st.text_area("Input String : ", placeholder="Input String")
@@ -67,18 +67,28 @@ def main():
             print("ERROR : Lexical Error")
             st.write('ERROR : Lexical Error')
     ex_code1 = '''for i in range(0,9,3):
-    x = x + 1'''
+    x = x / 3'''
     ex_code2 = '''for i in range(5):
-    x = x + 1
+    x = x ** 2
     '''
-    ex_code3 = '''for i in x:
-    x = x + 1
+    ex_code3 = '''for i in v:
+    x = a + b
     '''
     st.title('Example Code: ')
     st.code(ex_code1, language='python')
     st.code(ex_code2, language='python')
     st.write('Sebagai contoh inisial x adalah list: [1,2,3,4,5]')
     st.code(ex_code3, language='python')
-        
+
+    with st.sidebar:
+        st.markdown('Cara menggunakan :')
+        st.caption('1. Inputkan sintaks yang ingin dilakukan pengecekan')
+        st.caption('2. Tekan tombol Analyze untuk melakukan pengecekan Grammar dan parse')
+        st.caption('3. Hasil pengecekan akan ditampilkan dan akan dilakukan parse jika Grammar benar')
+
+        st.markdown('Kelompok 8 :\n')
+        st.caption('Ichwan Rizky Wahyudin (1301213434)\n')
+        st.caption('Alicia Kristina Parinussa (1301213507)\n')
+        st.caption('Raditya Aydin (1301213292)\n')
+
 main()
-    
