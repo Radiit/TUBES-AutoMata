@@ -67,12 +67,12 @@ def main():
             print("ERROR : Lexical Error")
             st.write('ERROR : Lexical Error')
     ex_code1 = '''for i in range(0,9,3):
-    i = i + 1'''
+    x = x + 1'''
     ex_code2 = '''for i in range(5):
-    i = i + 1
+    x = x + 1
     '''
     ex_code3 = '''for i in x:
-    i = i + 1
+    x = x + 1
     '''
     st.title('Example Code: ')
     st.code(ex_code1, language='python')
